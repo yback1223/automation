@@ -134,12 +134,12 @@ class GgoomgilCrawler:
                 if not self.navigate_to_next_page():
                     print("Reached the last page. Exiting loop.")
                     break
-            time.sleep(3)
+
+            time.sleep(WORK_TERM_SLEEP)
             self.save_to_json("crawled_data.json")
 
         except Exception as e:
             print(f"Error during crawling: {e}")
-            # 예외가 발생하더라도 여기까지의 데이터를 저장
             self.save_to_json("crawled_data.json")
         finally:
             self.driver.quit()
