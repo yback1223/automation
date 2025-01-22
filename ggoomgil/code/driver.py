@@ -17,7 +17,7 @@ class Driver:
 
         # 팝업 차단 옵션 추가
         prefs = {
-            "profile.default_content_setting_values.notifications": 2,  # 알림 차단
+            "profile.default_content_setting_values.notifications": 2,
             "profile.default_content_setting_values.popups": 2,       # 팝업 차단
             "profile.default_content_setting_values.automatic_downloads": 1  # 다운로드 자동 허용
         }
