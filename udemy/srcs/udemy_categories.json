@@ -1,0 +1,522 @@
+[
+    {
+        "first_category": "development",
+        "second_category": "web development"
+    },
+    {
+        "first_category": "development",
+        "second_category": "data science"
+    },
+    {
+        "first_category": "development",
+        "second_category": "mobile apps"
+    },
+    {
+        "first_category": "development",
+        "second_category": "programming languages"
+    },
+    {
+        "first_category": "development",
+        "second_category": "game development"
+    },
+    {
+        "first_category": "development",
+        "second_category": "databases"
+    },
+    {
+        "first_category": "development",
+        "second_category": "software testing"
+    },
+    {
+        "first_category": "development",
+        "second_category": "software engineering"
+    },
+    {
+        "first_category": "development",
+        "second_category": "development tools"
+    },
+    {
+        "first_category": "development",
+        "second_category": "no code development"
+    },
+    {
+        "first_category": "business",
+        "second_category": "entrepreneurship"
+    },
+    {
+        "first_category": "business",
+        "second_category": "communications"
+    },
+    {
+        "first_category": "business",
+        "second_category": "management"
+    },
+    {
+        "first_category": "business",
+        "second_category": "sales"
+    },
+    {
+        "first_category": "business",
+        "second_category": "strategy"
+    },
+    {
+        "first_category": "business",
+        "second_category": "operations"
+    },
+    {
+        "first_category": "business",
+        "second_category": "project management"
+    },
+    {
+        "first_category": "business",
+        "second_category": "business law"
+    },
+    {
+        "first_category": "business",
+        "second_category": "analytics and intelligence"
+    },
+    {
+        "first_category": "business",
+        "second_category": "human resources"
+    },
+    {
+        "first_category": "business",
+        "second_category": "industry"
+    },
+    {
+        "first_category": "business",
+        "second_category": "e-commerce"
+    },
+    {
+        "first_category": "business",
+        "second_category": "media"
+    },
+    {
+        "first_category": "business",
+        "second_category": "real estate"
+    },
+    {
+        "first_category": "business",
+        "second_category": "other business"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "accounting bookkeeping"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "cryptocurrency and blockchain"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "finance management"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "finance certification and exam prep"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "financial modeling and analysis"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "investing and trading"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "compliance"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "economics"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "money management tools"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "taxes"
+    },
+    {
+        "first_category": "finance and accounting",
+        "second_category": "other finance and accounting"
+    },
+    {
+        "first_category": "it and software",
+        "second_category": "it certification"
+    },
+    {
+        "first_category": "it and software",
+        "second_category": "network and security"
+    },
+    {
+        "first_category": "it and software",
+        "second_category": "hardware"
+    },
+    {
+        "first_category": "it and software",
+        "second_category": "operating systems"
+    },
+    {
+        "first_category": "it and software",
+        "second_category": "other it and software"
+    },
+    {
+        "first_category": "office productivity",
+        "second_category": "microsoft"
+    },
+    {
+        "first_category": "office productivity",
+        "second_category": "apple"
+    },
+    {
+        "first_category": "office productivity",
+        "second_category": "google"
+    },
+    {
+        "first_category": "office productivity",
+        "second_category": "sap"
+    },
+    {
+        "first_category": "office productivity",
+        "second_category": "oracle"
+    },
+    {
+        "first_category": "office productivity",
+        "second_category": "other productivity"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "personal transformation"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "productivity"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "leadership"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "career development"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "parenting and relationships"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "happiness"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "religion and spirituality"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "personal brand building"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "creativity"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "influence"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "self-esteem and confidence"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "stress management"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "memory"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "motivation"
+    },
+    {
+        "first_category": "personal development",
+        "second_category": "other personal development"
+    },
+    {
+        "first_category": "design",
+        "second_category": "web design"
+    },
+    {
+        "first_category": "design",
+        "second_category": "graphic design and illustration"
+    },
+    {
+        "first_category": "design",
+        "second_category": "design tools"
+    },
+    {
+        "first_category": "design",
+        "second_category": "user experience"
+    },
+    {
+        "first_category": "design", 
+        "second_category": "game design"
+    },
+    {
+        "first_category": "design",
+        "second_category": "3d and animation"
+    },
+    {
+        "first_category": "design",
+        "second_category": "fashion"
+    },
+    {
+        "first_category": "design",
+        "second_category": "architectural design"
+    },
+    {
+        "first_category": "design",
+        "second_category": "interior design"
+    },
+    {
+        "first_category": "design",
+        "second_category": "other design"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "digital marketing"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "search engine optimization"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "social media marketing"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "branding"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "marketing fundamentals"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "analytics and automation"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "public relations"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "advertising"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "video and mobile marketing"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "content marketing"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "growth hacking"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "affiliate marketing"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "product marketing"
+    },
+    {
+        "first_category": "marketing",
+        "second_category": "other marketing"
+    },
+    {
+        "first_category": "lifestyle",
+        "second_category": "arts and crafts"
+    },
+    {
+        "first_category": "lifestyle",
+        "second_category": "beauty and makeup"
+    },
+    {
+        "first_category": "lifestyle",
+        "second_category": "esoteric practices"
+    },
+    {
+        "first_category": "lifestyle",
+        "second_category": "food and beverage"
+    },
+    {
+        "first_category": "lifestyle",
+        "second_category": "gaming"
+    },
+    {
+        "first_category": "lifestyle",
+        "second_category": "home improvement"
+    },
+    {
+        "first_category": "lifestyle",
+        "second_category": "pet care and training"
+    },
+    {
+        "first_category": "lifestyle",
+        "second_category": "travel"
+    },
+    {
+        "first_category": "lifestyle",
+        "second_category": "other lifestyle"
+    },
+    {
+        "first_category": "photography and video",
+        "second_category": "digital photography"
+    },
+    {
+        "first_category": "photography and video",
+        "second_category": "photography fundamentals"
+    },
+    {
+        "first_category": "photography and video",
+        "second_category": "portraits"
+    },
+    {
+        "first_category": "photography and video",
+        "second_category": "photography tools"
+    },
+    {
+        "first_category": "photography and video",
+        "second_category": "commercial photography"
+    },
+    {
+        "first_category": "photography and video",
+        "second_category": "video design"
+    },
+    {
+        "first_category": "photography and video",
+        "second_category": "other photography and video"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "fitness"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "general health"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "sports"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "nutrition"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "yoga"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "mental health"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "self-defense"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "safety and first aid"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "dance"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "meditation"
+    },
+    {
+        "first_category": "health and fitness",
+        "second_category": "other health and fitness"
+    },    
+    {
+        "first_category": "music",
+        "second_category": "instruments"
+    },
+    {
+        "first_category": "music",
+        "second_category": "production"
+    },
+    {
+        "first_category": "music",
+        "second_category": "music fundamentals"
+    },
+    {
+        "first_category": "music",
+        "second_category": "vocal"
+    },
+    {
+        "first_category": "music",
+        "second_category": "music techniques"
+    },
+    {
+        "first_category": "music",
+        "second_category": "music software"
+    },
+    {
+        "first_category": "music",
+        "second_category": "other music"
+    },    
+    {
+        "first_category": "teaching and academics",
+        "second_category": "engineering"
+    },
+    {
+        "first_category": "teaching and academics",
+        "second_category": "humanities"
+    },
+    {
+        "first_category": "teaching and academics",
+        "second_category": "math"
+    },
+    {
+        "first_category": "teaching and academics",
+        "second_category": "online education"
+    },
+    {
+        "first_category": "teaching and academics",
+        "second_category": "science"
+    },
+    {
+        "first_category": "teaching and academics",
+        "second_category": "social science"
+    },
+    {
+        "first_category": "teaching and academics",
+        "second_category": "language"
+    },
+    {
+        "first_category": "teaching and academics",
+        "second_category": "teacher training"
+    },
+    {
+        "first_category": "teaching and academics",
+        "second_category": "test prep"
+    },
+    {
+        "first_category": "teaching and academics",
+        "second_category": "other teaching academics"
+    }
+]

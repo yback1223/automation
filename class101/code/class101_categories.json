@@ -1,0 +1,586 @@
+[
+    {
+        "first_category": "디지털 드로잉",
+        "second_category": "일러스트"
+    },
+    {
+        "first_category": "디지털 드로잉",
+        "second_category": "컨셉아트"
+    },
+    {
+        "first_category": "디지털 드로잉",
+        "second_category": "캐릭터 드로잉"
+    },
+    {
+        "first_category": "디지털 드로잉",
+        "second_category": "인물 드로잉"
+    },
+    {
+        "first_category": "디지털 드로잉",
+        "second_category": "굿즈﹒이모티콘"
+    },
+    {
+        "first_category": "디지털 드로잉",
+        "second_category": "웹툰"
+    },
+    {
+        "first_category": "디지털 드로잉",
+        "second_category": "캘리그라피"
+    },
+    {
+        "first_category": "디지털 드로잉",
+        "second_category": "더 새로운 디지털 드로잉"
+    },
+    {
+        "first_category": "드로잉",
+        "second_category": "펜 · 연필"
+    },
+    {
+        "first_category": "드로잉",
+        "second_category": "마카"
+    },
+    {
+        "first_category": "드로잉",
+        "second_category": "색연필"
+    },
+    {
+        "first_category": "드로잉",
+        "second_category": "수채화"
+    },
+    {
+        "first_category": "드로잉",
+        "second_category": "오일파스텔"
+    },
+    {
+        "first_category": "드로잉",
+        "second_category": "과슈 · 아크릴화"
+    },
+    {
+        "first_category": "드로잉",
+        "second_category": "유화"
+    },
+    {
+        "first_category": "드로잉",
+        "second_category": "동양화"
+    },
+    {
+        "first_category": "드로잉",
+        "second_category": "캘리그라피"
+    },
+    {
+        "first_category": "드로잉",
+        "second_category": "더 새로운 드로잉"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "대바늘 뜨개"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "코바늘 뜨개"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "자수"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "실 공예"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "패브릭 공예"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "비누﹒캔들﹒향"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "나무﹒라탄 공예"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "가죽 공예"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "종이 공예"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "레진 공예"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "도예"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "플라워 공예"
+    },
+    {
+        "first_category": "공예",
+        "second_category": "더 새로운 공예"
+    },
+    {
+        "first_category": "요리 · 음료",
+        "second_category": "한식"
+    },
+    {
+        "first_category": "요리 · 음료",
+        "second_category": "일식 · 중식"
+    },
+    {
+        "first_category": "요리 · 음료",
+        "second_category": "양식"
+    },
+    {
+        "first_category": "요리 · 음료",
+        "second_category": "세계요리"
+    },
+    {
+        "first_category": "요리 · 음료",
+        "second_category": "건강 · 다이어트식"
+    },
+    {
+        "first_category": "요리 · 음료",
+        "second_category": "비건 · 채소"
+    },
+    {
+        "first_category": "요리 · 음료",
+        "second_category": "도시락 · 케이터링"
+    },
+    {
+        "first_category": "요리 · 음료",
+        "second_category": "음료 · 술"
+    },
+    {
+        "first_category": "요리 · 음료",
+        "second_category": "더 새로운 요리 · 음료"
+    },
+    {
+        "first_category": "베이킹 · 디저트",
+        "second_category": "케이크"
+    },
+    {
+        "first_category": "베이킹 · 디저트",
+        "second_category": "제과"
+    },
+    {
+        "first_category": "베이킹 · 디저트",
+        "second_category": "제빵"
+    },
+    {
+        "first_category": "베이킹 · 디저트",
+        "second_category": "떡 · 전통다과"
+    },
+    {
+        "first_category": "베이킹 · 디저트",
+        "second_category": "비건"
+    },
+    {
+        "first_category": "베이킹 · 디저트",
+        "second_category": "더 새로운 베이킹 · 디저트"
+    },
+    {
+        "first_category": "음악",
+        "second_category": "악기"
+    },
+    {
+        "first_category": "음악",
+        "second_category": "보컬 · 랩"
+    },
+    {
+        "first_category": "음악",
+        "second_category": "작곡 · 프로듀싱"
+    },
+    {
+        "first_category": "운동",
+        "second_category": "요가"
+    },
+    {
+        "first_category": "운동",
+        "second_category": "필라테스"
+    },
+    {
+        "first_category": "운동",
+        "second_category": "발레"
+    },
+    {
+        "first_category": "운동",
+        "second_category": "순환 · 스트레칭"
+    },
+    {
+        "first_category": "운동",
+        "second_category": "재활 · 자세 개선"
+    },
+    {
+        "first_category": "운동",
+        "second_category": "피트니스"
+    },
+    {
+        "first_category": "운동",
+        "second_category": "러닝 · 사이클"
+    },
+    {
+        "first_category": "운동",
+        "second_category": "스포츠"
+    },
+    {
+        "first_category": "운동",
+        "second_category": "더 새로운 운동"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "뷰티"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "명상"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "심리"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "타로 · 사주 · 운세"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "게임 · e스포츠"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "라이프 해킹"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "댄스 · 무용"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "반려동물"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "인문학"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "더 새로운 라이프"
+    },
+    {
+        "first_category": "사진 · 영상",
+        "second_category": "사진"
+    },
+    {
+        "first_category": "사진 · 영상",
+        "second_category": "영상"
+    },
+    {
+        "first_category": "금융 · 재테크",
+        "second_category": "주식"
+    },
+    {
+        "first_category": "금융 · 재테크",
+        "second_category": "부동산"
+    },
+    {
+        "first_category": "금융 · 재테크",
+        "second_category": "더 새로운 금융 · 재테크"
+    },
+    {
+        "first_category": "창업 · 부업",
+        "second_category": "국내 쇼핑몰"
+    },
+    {
+        "first_category": "창업 · 부업",
+        "second_category": "해외 쇼핑몰"
+    },
+    {
+        "first_category": "창업 · 부업",
+        "second_category": "블로그"
+    },
+    {
+        "first_category": "창업 · 부업",
+        "second_category": "유튜브"
+    },
+    {
+        "first_category": "창업 · 부업",
+        "second_category": "SNS"
+    },
+    {
+        "first_category": "창업 · 부업",
+        "second_category": "전자책 · 디지털파일"
+    },
+    {
+        "first_category": "창업 · 부업",
+        "second_category": "쉐어하우스 · 숙박업"
+    },
+    {
+        "first_category": "창업 · 부업",
+        "second_category": "요식업"
+    },
+    {
+        "first_category": "창업 · 부업",
+        "second_category": "더 새로운 창업 · 부업"
+    },
+    {
+        "first_category": "프로그래밍",
+        "second_category": "IT교양"
+    },
+    {
+        "first_category": "프로그래밍",
+        "second_category": "프로그래밍언어"
+    },
+    {
+        "first_category": "프로그래밍",
+        "second_category": "Web · 프론트엔드"
+    },
+    {
+        "first_category": "프로그래밍",
+        "second_category": "백엔드"
+    },
+    {
+        "first_category": "프로그래밍",
+        "second_category": "App"
+    },
+    {
+        "first_category": "프로그래밍",
+        "second_category": "게임"
+    },
+    {
+        "first_category": "프로그래밍",
+        "second_category": "보안 · 네트워크"
+    },
+    {
+        "first_category": "프로그래밍",
+        "second_category": "시스템 · DevOps"
+    },
+    {
+        "first_category": "데이터사이언스",
+        "second_category": "데이터분석"
+    },
+    {
+        "first_category": "데이터사이언스",
+        "second_category": "AI · 인공지능"
+    },
+    {
+        "first_category": "데이터사이언스",
+        "second_category": "딥러닝 · 머신러닝"
+    },
+    {
+        "first_category": "제품 기획",
+        "second_category": "디자인 씽킹"
+    },
+    {
+        "first_category": "제품 기획",
+        "second_category": "PM · PO"
+    },
+    {
+        "first_category": "제품 기획",
+        "second_category": "UI · UX"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "사업기획 · 전략"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "리더십"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "취업 · 이직"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "인사관리"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "노하우"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "자격증"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "재무 · 회계"
+    },
+    {
+        "first_category": "생산성",
+        "second_category": "업무생산성 · 자동화"
+    },
+    {
+        "first_category": "생산성",
+        "second_category": "커뮤니케이션 · 글쓰기"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "디지털마케팅"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "퍼포먼스마케팅"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "콘텐츠마케팅"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "CRM마케팅"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "브랜드마케팅"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "디자인툴"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "그래픽디자인"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "브랜드디자인"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "타이포그래피"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "건축디자인"
+    },
+    {
+        "first_category": "영상/3D",
+        "second_category": "영상편집"
+    },
+    {
+        "first_category": "영상/3D",
+        "second_category": "모션그래픽"
+    },
+    {
+        "first_category": "영상/3D",
+        "second_category": "게임그래픽"
+    },
+    {
+        "first_category": "영상/3D",
+        "second_category": "3D"
+    },
+    {
+        "first_category": "영어",
+        "second_category": "영어회화"
+    },
+    {
+        "first_category": "영어",
+        "second_category": "문법 · 독해"
+    },
+    {
+        "first_category": "영어",
+        "second_category": "발음 · 소리"
+    },
+    {
+        "first_category": "영어",
+        "second_category": "비즈니스"
+    },
+    {
+        "first_category": "영어",
+        "second_category": "통역 · 번역"
+    },
+    {
+        "first_category": "외국어 시험",
+        "second_category": "토익"
+    },
+    {
+        "first_category": "외국어 시험",
+        "second_category": "토익 스피킹"
+    },
+    {
+        "first_category": "외국어 시험",
+        "second_category": "오픽"
+    },
+    {
+        "first_category": "외국어 시험",
+        "second_category": "지텔프"
+    },
+    {
+        "first_category": "외국어 시험",
+        "second_category": "텝스/토플/IELTS"
+    },
+    {
+        "first_category": "외국어 시험",
+        "second_category": "스페인어 시험"
+    },
+    {
+        "first_category": "외국어 시험",
+        "second_category": "중국어 시험"
+    },
+    {
+        "first_category": "외국어 시험",
+        "second_category": "일본어 시험"
+    },
+    {
+        "first_category": "제2 외국어",
+        "second_category": "일본어"
+    },
+    {
+        "first_category": "제2 외국어",
+        "second_category": "중국어"
+    },
+    {
+        "first_category": "제2 외국어",
+        "second_category": "기타언어"
+    },
+    {
+        "first_category": "아이 교육",
+        "second_category": "미술 · 공예"
+    },
+    {
+        "first_category": "아이 교육",
+        "second_category": "요리"
+    },
+    {
+        "first_category": "아이 교육",
+        "second_category": "자연 · 과학"
+    },
+    {
+        "first_category": "아이 교육",
+        "second_category": "수학 · 코딩"
+    },
+    {
+        "first_category": "아이 교육",
+        "second_category": "사회 · 경제"
+    },
+    {
+        "first_category": "아이 교육",
+        "second_category": "신체 · 건강"
+    },
+    {
+        "first_category": "아이 교육",
+        "second_category": "언어 · 외국어"
+    },
+    {
+        "first_category": "아이 교육",
+        "second_category": "음악"
+    },
+    {
+        "first_category": "아이 교육",
+        "second_category": "특별 활동"
+    },
+    {
+        "first_category": "부모 교육",
+        "second_category": "육아"
+    },
+    {
+        "first_category": "부모 교육",
+        "second_category": "학습"
+    }
+]
