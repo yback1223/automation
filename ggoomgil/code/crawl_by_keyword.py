@@ -45,7 +45,6 @@ class GgoomgilCrawler:
         ]
 
     def load_existing_data(self, file_name):
-        """Load existing JSON data."""
         try:
             with open(file_name, "r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -56,7 +55,6 @@ class GgoomgilCrawler:
             return []
 
     def save_to_json(self, file_name):
-        """Save current programs to JSON."""
         try:
             with open(file_name, "w", encoding="utf-8") as json_file:
                 json.dump(self.programs, json_file, ensure_ascii=False, indent=4)
@@ -65,7 +63,6 @@ class GgoomgilCrawler:
             print(f"Error saving data")
 
     def run(self):
-        """Run the crawler for all keywords."""
         try:
             for keyword in self.keywords:
                 print(f"Searching for keyword: {keyword}")
@@ -102,7 +99,6 @@ class GgoomgilCrawler:
             self.driver.quit()
 
     def perform_search(self, keyword):
-        """Perform a search for the given keyword."""
         search_input = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "input.cs-input#search_keyword"))
         )
@@ -408,9 +404,6 @@ class GgoomgilCrawler:
             return {}
 
     def translate_keys(self, dl_data):
-        """
-        dl_data 내의 한글 키를 코드에서 사용하기 쉽게 영문으로 변환하는 함수
-        """
         key_translation = {
             '체험주기': 'program_days',
             '체험이수시간': 'program_times',
@@ -433,9 +426,6 @@ class GgoomgilCrawler:
         return translated_data
 
     def parse_program_details(self, details):
-        """
-        학교별 프로그램 상세 구조를 파싱해 Dict 형태로 반환.
-        """
         try:
             structured_details = {
                 "goal": details.get("목표", "").strip(),
@@ -455,9 +445,6 @@ class GgoomgilCrawler:
             return {}
 
     def extract_notice(self):
-        """
-        유의사항 텍스트 추출
-        """
         try:
             notes_section = WebDriverWait(self.driver, 1).until(
                 EC.presence_of_element_located(
@@ -471,9 +458,6 @@ class GgoomgilCrawler:
             return ""
 
     def extract_location_info(self):
-        """
-        체험장소 및 찾아가는 방법을 추출
-        """
         try:
             location_info = WebDriverWait(self.driver, 1).until(
                 EC.presence_of_element_located(
@@ -487,9 +471,6 @@ class GgoomgilCrawler:
             return ""
 
     def extract_available_regions(self):
-        """
-        체험 가능한 지역(버튼 형태) 정보 추출
-        """
         try:
             region_elements = WebDriverWait(self.driver, 1).until(
                 EC.presence_of_all_elements_located(

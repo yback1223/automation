@@ -1,0 +1,522 @@
+[
+    {
+        "first_category": "개발",
+        "second_category": "웹 개발"
+    },
+    {
+        "first_category": "개발",
+        "second_category": "데이터 과학"
+    },
+    {
+        "first_category": "개발",
+        "second_category": "모바일 개발"
+    },
+    {
+        "first_category": "개발",
+        "second_category": "프로그래밍 언어"
+    },
+    {
+        "first_category": "개발",
+        "second_category": "게임 개발"
+    },
+    {
+        "first_category": "개발",
+        "second_category": "데이터베이스 설계 및 개발"
+    },
+    {
+        "first_category": "개발",
+        "second_category": "소프트웨어 테스팅"
+    },
+    {
+        "first_category": "개발",
+        "second_category": "소프트웨어 엔지니어링"
+    },
+    {
+        "first_category": "개발",
+        "second_category": "소프트웨어 개발 도구"
+    },
+    {
+        "first_category": "개발",
+        "second_category": "노코드 개발"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "기업가 정신"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "커뮤니케이션"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "경영"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "판매"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "비즈니스 전략"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "운영"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "프로젝트 관리"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "상법"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "비즈니스 애널리틱스 및 인텔리전스"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "인사 관리"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "산업"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "전자 상거래"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "미디어"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "부동산"
+    },
+    {
+        "first_category": "비즈니스",
+        "second_category": "기타 비즈니스"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "회계 및 부기"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "암호화폐 및 블록체인"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "경제학"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "재무 자격증 및 시험 준비"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "금융 모델링 및 분석"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "투자 및 주식 매매"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "금융"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "준법"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "자금 관리 도구"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "조세"
+    },
+    {
+        "first_category": "재무 및 회계",
+        "second_category": "기타 재무 및 회계"
+    },
+    {
+        "first_category": "IT 및 소프트웨어",
+        "second_category": "IT 인증"
+    },
+    {
+        "first_category": "IT 및 소프트웨어",
+        "second_category": "네트워크 및 보안"
+    },
+    {
+        "first_category": "IT 및 소프트웨어",
+        "second_category": "하드웨어"
+    },
+    {
+        "first_category": "IT 및 소프트웨어",
+        "second_category": "운영 체제 및 서버"
+    },
+    {
+        "first_category": "IT 및 소프트웨어",
+        "second_category": "기타 IT 및 소트트웨어"
+    },
+    {
+        "first_category": "사무 생산성",
+        "second_category": "마이크로소프트"
+    },
+    {
+        "first_category": "사무 생산성",
+        "second_category": "애플"
+    },
+    {
+        "first_category": "사무 생산성",
+        "second_category": "구글"
+    },
+    {
+        "first_category": "사무 생산성",
+        "second_category": "sap"
+    },
+    {
+        "first_category": "사무 생산성",
+        "second_category": "오라클"
+    },
+    {
+        "first_category": "사무 생산성",
+        "second_category": "기타 사무 생산성"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "자기 혁신"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "개인 생산성"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "리더십"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "경력 개발"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "육아 및 관계"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "행복"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "밀교 수련"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "개인 브랜드 구축"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "창의력"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "영향력"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "자존감과 자신감"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "스트레스 관리"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "기억력 및 공부 스킬"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "동기부여"
+    },
+    {
+        "first_category": "자기 계발",
+        "second_category": "기타 자기 계발"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "웹 디자인"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "그래픽 디자인 및 일러스트레이션"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "디자인 도구"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "사용자 경험 디자인"
+    },
+    {
+        "first_category": "디자인", 
+        "second_category": "게임 디자인"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "3D 및 애니메이션"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "패션 디자인"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "건축 디자인"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "인테리어 디자인"
+    },
+    {
+        "first_category": "디자인",
+        "second_category": "기타 디자인"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "디지털 마케팅"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "검색 엔진 최적화"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "소셜 미디어 마케팅"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "브랜딩"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "마케팅 기초"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "마케팅 분석 및 자동화"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "홍보"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "유료 광고"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "비디오 및 모바일 마케팅"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "콘텐츠 마케팅"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "그로스 해킹(Growth Hacking)"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "제휴 마케팅"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "제품 마케팅"
+    },
+    {
+        "first_category": "마케팅",
+        "second_category": "기타 마케팅"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "예술 및 공예"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "미용 및 화장"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "밀교 수련"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "식음료"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "게임"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "주택 개조와 정원 꾸미기"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "애완동물 관리 및 훈련"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "여행"
+    },
+    {
+        "first_category": "라이프스타일",
+        "second_category": "기타 라이프스타일"
+    },
+    {
+        "first_category": "사진 및 영상",
+        "second_category": "디지털 사진"
+    },
+    {
+        "first_category": "사진 및 영상",
+        "second_category": "사진"
+    },
+    {
+        "first_category": "사진 및 영상",
+        "second_category": "인물 사진"
+    },
+    {
+        "first_category": "사진 및 영상",
+        "second_category": "사진 도구"
+    },
+    {
+        "first_category": "사진 및 영상",
+        "second_category": "상업용 사진"
+    },
+    {
+        "first_category": "사진 및 영상",
+        "second_category": "영상 디자인"
+    },
+    {
+        "first_category": "사진 및 영상",
+        "second_category": "기타 사진 및 영상"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "피트니스"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "일반 건강"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "스포츠"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "영양과 식단"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "요가"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "정신 건강"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "무술과 호신술"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "안전 및 응급 장치"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "춤"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "명상"
+    },
+    {
+        "first_category": "건강 및 피트니스",
+        "second_category": "기타 건강 및 피트니스"
+    },    
+    {
+        "first_category": "음악",
+        "second_category": "악기"
+    },
+    {
+        "first_category": "음악",
+        "second_category": "음악 프로덕션"
+    },
+    {
+        "first_category": "음악",
+        "second_category": "음악의 기초"
+    },
+    {
+        "first_category": "음악",
+        "second_category": "보컬"
+    },
+    {
+        "first_category": "음악",
+        "second_category": "음악 기법"
+    },
+    {
+        "first_category": "음악",
+        "second_category": "음악 소프트웨어"
+    },
+    {
+        "first_category": "음악",
+        "second_category": "기타 음악"
+    },    
+    {
+        "first_category": "교육 및 학문",
+        "second_category": "엔지니어링"
+    },
+    {
+        "first_category": "교육 및 학문",
+        "second_category": "인문학"
+    },
+    {
+        "first_category": "교육 및 학문",
+        "second_category": "수학"
+    },
+    {
+        "first_category": "교육 및 학문",
+        "second_category": "온라인 교육"
+    },
+    {
+        "first_category": "교육 및 학문",
+        "second_category": "과학"
+    },
+    {
+        "first_category": "교육 및 학문",
+        "second_category": "사회 과학"
+    },
+    {
+        "first_category": "교육 및 학문",
+        "second_category": "언어 배우기"
+    },
+    {
+        "first_category": "교육 및 학문",
+        "second_category": "강사 연수"
+    },
+    {
+        "first_category": "교육 및 학문",
+        "second_category": "시험 준비"
+    },
+    {
+        "first_category": "교육 및 학문",
+        "second_category": "기타 교육 및 학문문"
+    }
+]
