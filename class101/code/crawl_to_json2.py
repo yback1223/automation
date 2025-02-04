@@ -51,7 +51,6 @@ class Class101Crawler:
                         program_name, program_bookmark_count, program_link = self.find_and_click_share_button()
                         
                         if not program_name or not program_link:
-                            print("Failed to extract program details. Skipping this program.")
                             continue
 
                         if any(program.get("program_name") == program_name for program in self.programs):
@@ -77,7 +76,7 @@ class Class101Crawler:
 
                         program_info, program_curriculum = self.extract_program_info_and_curriculum()
                         if not program_info:
-                            print("Failed to extract program info. Skipping this program.")
+                            print(f"Failed to extract program info. Skipping this program. The program name = {program_name} skipping")
                             continue
 
                         program_start_date = program_info[0] if len(program_info) > 0 else "N/A"
@@ -110,7 +109,7 @@ class Class101Crawler:
                         })
 
                         self.save_to_json("crawled_data.json")
-
+                        print(f'Program "{program_name}" successfully added to the list.')
                     except Exception as e:
                         print(f"Error processing content link '{content_link}': {e}")
                         continue

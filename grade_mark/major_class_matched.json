@@ -1,0 +1,205 @@
+[
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "사회 과학 대학",
+        "major": "경제학부"
+    },
+    {
+        "class": "확률과 통계",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "사회 과학 대학",
+        "major": "경제학부"
+    },
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "수리과학부"
+    },
+    {
+        "class": "확률과 통계",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "수리과학부"
+    },
+    {
+        "class": "기하",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "수리과학부"
+    },
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "통계학과"
+    },
+    {
+        "class": "확률과 통계",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "통계학과"
+    },
+    {
+        "class": "기하",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "통계학과"
+    },
+    {
+        "class": "물리학Ⅱ",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "물리학전공"
+    },
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "물리학전공"
+    },
+    {
+        "class": "기하",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "물리학전공"
+    },
+    {
+        "class": "지구과학Ⅰ",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "천문학전공"
+    },
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "천문학전공"
+    },
+    {
+        "class": "기하",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "천문학전공"
+    },
+    {
+        "class": "화학Ⅱ",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "화학부"
+    },
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "화학부"
+    },
+    {
+        "class": "생명과학Ⅱ",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "생명과학부"
+    },
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "생명과학부"
+    },
+    {
+        "class": "물리학Ⅱ 또는 화학Ⅱ 또는 지구과학Ⅱ",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "지구환경과학부"
+    },
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "자연 과학 대학",
+        "major": "지구환경과학부"
+    },
+    {
+        "class": "생명과학Ⅰ",
+        "status": "recommended",
+        "university": "서울대학교",
+        "big_major": "간호대학",
+        "major": "-"
+    },
+    {
+        "class": "생명과학Ⅱ",
+        "status": "recommended",
+        "university": "서울대학교",
+        "big_major": "간호대학",
+        "major": "-"
+    },
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "공과 대학",
+        "major": "광역"
+    },
+    {
+        "class": "확률과 통계",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "공과 대학",
+        "major": "광역"
+    },
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "공과 대학",
+        "major": "건설환경공학부"
+    },
+    {
+        "class": "기하",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "공과 대학",
+        "major": "건설환경공학부"
+    },
+    {
+        "class": "물리학Ⅱ",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "공과 대학",
+        "major": "기계공학부"
+    },
+    {
+        "class": "미적분",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "공과 대학",
+        "major": "기계공학부"
+    },
+    {
+        "class": "기하",
+        "status": "necessary",
+        "university": "서울대학교",
+        "big_major": "공과 대학",
+        "major": "기계공학부"
+    }
+]
