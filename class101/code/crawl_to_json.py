@@ -14,7 +14,7 @@ WORK_TERM_SLEEP = 1
 
 class Class101Crawler:
     def __init__(self):
-        self.programs = self.load_existing_data("crawled_data.json")
+        self.programs = self.load_existing_data("crawled_data_v2.json")
         self.driver = Driver().set_chrome()
         self.actions = ActionChains(self.driver)
         self.url = "https://class101.net/ko"

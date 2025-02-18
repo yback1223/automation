@@ -53,10 +53,6 @@ class Class101Crawler:
                         if not program_name or not program_link:
                             continue
 
-                        if any(program.get("program_name") == program_name for program in self.programs):
-                            print(f"Program '{program_name}' already exists. Skipping...")
-                            continue
-
                         program_kit = self.extract_kit_content()
                         program_description = self.extract_program_description()
 
@@ -70,6 +66,9 @@ class Class101Crawler:
                                 print("Keyword '클래스 준비물' not found in description.")
                                 program_kit = "N/A"
 
+                        # gemini work
+
+
                         program_creator_detail = self.extract_creator_section_data()
                         program_creator = program_creator_detail.get('creator_name', "N/A")
                         program_creator_description = ' '.join(program_creator_detail.get('description', []))
@@ -79,6 +78,9 @@ class Class101Crawler:
                             print(f"Failed to extract program info. Skipping this program. The program name = {program_name} skipping")
                             continue
 
+                        extracted_price = self.get_price_or_payment()
+                        program_price = extracted_price if extracted_price else "N/A"
+                        
                         program_start_date = program_info[0] if len(program_info) > 0 else "N/A"
                         program_info_detail = [info.strip() for info in program_info[1].split("·")] if len(program_info) > 1 else []
                         program_difficulty = program_info_detail[0] if len(program_info_detail) > 0 else "N/A"
@@ -86,12 +88,13 @@ class Class101Crawler:
                         program_total_time = program_info[2] if len(program_info) > 2 else "N/A"
                         program_audio_languages = program_info[3] if len(program_info) > 3 else "N/A"
                         program_subtitles = program_info[4] if len(program_info) > 4 else "N/A"
-
+                        
                         program_first_category, program_second_category = self.extract_text_from_home_section() or ("N/A", "N/A")
 
                         self.programs.append({
                             "program_name": program_name,
                             "program_creator": program_creator,
+                            "program_price": program_price,
                             "program_link": program_link,
                             "program_difficulty": program_difficulty,
                             "program_total_time": program_total_time,
@@ -226,7 +229,56 @@ class Class101Crawler:
             self.click_close_alert_button()
             return None
 
-            
+
+    def get_price_or_payment(self):
+        try:
+            try:
+                price_elements = self.driver.find_elements(By.XPATH, ".//div[@class='css-1ru7dyh']")
+                span_elements = price_elements[-1].find_elements(By.TAG_NAME, 'span')
+
+                if span_elements:
+                    last_span_text = span_elements[-1].text.strip()
+                    return last_span_text
+                else:
+                    return None
+            except:
+                pass
+
+            try:
+                installment_checkbox = self.driver.find_elements(By.XPATH, ".//div[@data-testid='checkbox' and contains(@class, 'css-9n0bug')]")
+                
+                is_checked = installment_checkbox.get_attribute("aria-checked")
+
+                if is_checked == "true":
+                    installment_checkbox.click()
+                    time.sleep(0.5)
+
+                benefit_applied_element = self.driver.find_elements(By.XPATH, "//span[@data-testid='body' and contains(text(), '최대 혜택가')]")
+                parent_div = benefit_applied_element.find_element(By.XPATH, "./parent::div")
+                price_elements = parent_div.find_elements(By.XPATH, ".//h3[@data-testid='title' and contains(@class, 'css-12r95pg')]")
+
+                final_price = price_elements[-1].text.strip()
+                return final_price
+            except:
+                pass
+
+            try:
+                subscribe_button = self.driver.find_element(By.XPATH, "//span[@data-testid='button-text' and text()='구독으로 시작하기']")
+                return '구독'
+            except:
+                pass
+
+            try:
+                alert_apply_button = self.driver.find_element(By.XPATH, "//button[@data-testid='button-text' and text()='알림 신청하기']")
+                return '알림 신청 중'
+            except:
+                pass
+        except:
+            print(f'가격을 찾지 못함!')
+            return None
+
+
+
     def find_and_click_share_button(self):
         try:
             buttons = self.driver.find_elements(By.TAG_NAME, "button")
@@ -246,8 +298,11 @@ class Class101Crawler:
                             return None, None, None
 
                         self.click_close_alert_button()
-                        number_elements = parent_section.find_elements(By.XPATH, ".//span[@data-testid='body']")
-                        number_text = number_elements[1].text.strip() if number_elements[1] else "N/A"
+                        bookmark_element = WebDriverWait(self.driver, 10).until(
+                            EC.presence_of_element_located((By.XPATH, "//svg[@data-testid='bookmard-thin']/following-sibling::span"))
+                        )
+
+                        bookmark_value = bookmark_element.text.strip()
 
                         self.click_close_alert_button()
                         button.click()
@@ -264,7 +319,7 @@ class Class101Crawler:
                                 time.sleep(WORK_TERM_SLEEP)
                                 break
 
-                        return title_text, number_text, clipboard.paste()
+                        return title_text, bookmark_value, clipboard.paste()
 
                 except Exception as inner_e:
                     print(f"버튼 검사 중 오류 발생")
@@ -438,7 +493,7 @@ class Class101Crawler:
             return ' '.join(result)
 
         except Exception as e:
-            print(f"Error kit:")
+            print(f"Error: Kit doesn't exist!")
             self.click_close_alert_button()
             return None
         
