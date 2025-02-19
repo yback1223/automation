@@ -5,6 +5,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
+from bs4 import BeautifulSoup
+
+import re
 import clipboard, time
 import pandas as pd
 import math, random, json, re
@@ -14,10 +17,11 @@ WORK_TERM_SLEEP = 1
 
 class Class101Crawler:
     def __init__(self):
-        self.programs = self.load_existing_data("crawled_data.json")
+        self.programs = self.load_existing_data("crawled_data2.json")
         self.driver = Driver().set_chrome()
         self.actions = ActionChains(self.driver)
         self.url = "https://class101.net/ko"
+        # self.url = "https://class101.net/ko/products/600fe7f15e8ff8000dc3d672"
         self.current_page = 1
 
 
@@ -43,10 +47,11 @@ class Class101Crawler:
                 time.sleep(WORK_TERM_SLEEP)
                 content_links = self.scroll_and_collect_links()
 
-                for content_link in content_links:
+                for link in content_links:
+                    content_link = link.get('link')
+                    image_url = link.get('image_url')
                     self.driver.get(content_link)
                     time.sleep(WORK_TERM_SLEEP)
-
                     try:
                         program_name, program_bookmark_count, program_link = self.find_and_click_share_button()
                         
@@ -65,8 +70,6 @@ class Class101Crawler:
                             else:
                                 print("Keyword '클래스 준비물' not found in description.")
                                 program_kit = "N/A"
-
-                        # gemini work
 
 
                         program_creator_detail = self.extract_creator_section_data()
@@ -93,6 +96,7 @@ class Class101Crawler:
 
                         self.programs.append({
                             "program_name": program_name,
+                            "program_image_url": image_url,
                             "program_creator": program_creator,
                             "program_price": program_price,
                             "program_link": program_link,
@@ -111,7 +115,7 @@ class Class101Crawler:
                             "program_second_category": program_second_category,
                         })
 
-                        self.save_to_json("crawled_data.json")
+                        self.save_to_json("crawled_data2.json")
                         print(f'Program "{program_name}" successfully added to the list.')
                     except Exception as e:
                         print(f"Error processing content link '{content_link}': {e}")
@@ -174,37 +178,71 @@ class Class101Crawler:
 
 
     def scroll_and_collect_links(self):
-        collected_links = set()
+        collected_links = []
         self.click_close_alert_button()
-        last_height = self.driver.execute_script("return document.body.scrollHeight")
         
+        last_height = self.driver.execute_script("return document.body.scrollHeight")
         while True:
-            try:
-                list_elements = self.driver.find_elements(By.CSS_SELECTOR, "li a[href]")
-                for element in list_elements:
-                    self.click_close_alert_button()
-                    href = element.get_attribute("href")
-                    if href and href not in collected_links:
-                        collected_links.add(href)
-                        print(f"Collected: {href}")
-            except Exception as e:
-                self.click_close_alert_button()
-                print(f"Error while collecting links")
-            self.click_close_alert_button()
-
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(WORK_TERM_SLEEP)
-            self.click_close_alert_button()
-
             new_height = self.driver.execute_script("return document.body.scrollHeight")
             if new_height == last_height:
                 print("Reached the end of the page.")
                 break
             last_height = new_height
+
+        try:
+            list_elements = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_all_elements_located((By.CSS_SELECTOR, "li a[href]"))
+            )
+            for element in list_elements:
+                self.click_close_alert_button()
+                href = element.get_attribute("href")
+                if href and not self.is_duplicate_link(href, collected_links):
+                    image_url = self.extract_image_url(element)
+                    if image_url:
+                        collected_links.append({
+                            "link": href,
+                            "image_url": image_url
+                        })
+                        print(f"Collected: {href} with image: {image_url}")
+        except Exception as e:
             self.click_close_alert_button()
+            print(f"Error while collecting links: {e}")
 
-        return list(collected_links)
+        return collected_links
+    
+    def extract_image_url(self, element):
+        try:
+            # First, try to find the source element with srcset
+            try:
+                image_source = element.find_element(By.XPATH, ".//picture[@data-testid='image']/source")
+                srcset = image_source.get_attribute('srcset')
+                if srcset:
+                    urls = srcset.split(',')
+                    if len(urls) >= 2:  # Check if there are at least two URLs
+                        second_url = urls[1].strip()
+                        return second_url.split(' ')[0]  # Return the second URL without size descriptor
+            except Exception as e:
+                print(f"Error finding or processing srcset")
 
+            # If the above fails, look for the img tag directly inside the picture
+            try:
+                image_element = element.find_element(By.XPATH, ".//picture[@data-testid='image']/img")
+                src = image_element.get_attribute('src')
+                if src:
+                    return src  # Return the src of the img tag since srcset is not available
+            except Exception as e:
+                print(f"Error finding or processing img src")
+
+            print("No image URL found.")
+            return None
+        except Exception as e:
+            print(f"Unexpected error in extract_image_url: {e}")
+            return None
+
+    def is_duplicate_link(self, link, collected_links):
+        return any(existing_link['link'] == link for existing_link in collected_links)
 
     def extract_title(self):
         try:
@@ -292,17 +330,24 @@ class Class101Crawler:
                         self.click_close_alert_button()
                         title_element = parent_section.find_element(By.XPATH, ".//h2[@data-testid='title']")
                         title_text = title_element.text.strip() if title_element else "N/A"
-
+                        print(f'title_text = {title_text}')
                         if any(program.get("program_name") == title_text for program in self.programs):
                             print(f"Program '{title_text}' already exists. Skipping...")
                             return None, None, None
 
                         self.click_close_alert_button()
-                        bookmark_element = WebDriverWait(self.driver, 10).until(
-                            EC.presence_of_element_located((By.XPATH, "//svg[@data-testid='bookmard-thin']/following-sibling::span"))
-                        )
+                        divs = self.driver.find_elements(By.XPATH, "//div[@class='css-1e43e8r']")
 
-                        bookmark_value = bookmark_element.text.strip()
+                        for div in divs:
+                            if 'bookmark-thin' in div.get_attribute("innerHTML"):
+                                try:
+                                    bookmark_value = div.find_element(By.XPATH, "./span[@data-testid='body']").get_attribute('textContent').strip()
+                                    break
+                                except Exception as e:
+                                    print(f"Failed to find bookmark element: {e}")
+
+                        else:
+                            print("No div with bookmark-thin was found.")
 
                         self.click_close_alert_button()
                         button.click()
@@ -377,42 +422,60 @@ class Class101Crawler:
 
             self.click_close_alert_button()
             program_info = all_texts[1:6]
+            curriculum_html = paper_element.get_attribute('outerHTML')
 
-            self.click_close_alert_button()
-            curriculum_lines = [
-                line for line in all_texts[6:]
-                if "미리보기" not in line and not re.match(r"\d{2}:\d{2}", line)
-            ]
-            sections = []
-            current_section = {"title": None, "lectures": []}
-
-            self.click_close_alert_button()
-            for line in curriculum_lines:
-                if line[0].isdigit() and line[1] == ".":
-                    current_section["lectures"].append(line)
-                else:
-                    if current_section["title"]:
-                        sections.append(current_section)
-                    current_section = {"title": line, "lectures": []}
-
-            self.click_close_alert_button()
-            if current_section["title"]:
-                sections.append(current_section)
-
-            program_curriculum_text = ""
-            for curriculum in sections:
-                program_curriculum_text += f"{curriculum.get('title')}\n"
-                for lecture in curriculum.get('lectures'):
-                    program_curriculum_text += f"{lecture}\n"
-                program_curriculum_text += "\n"
+            program_curriculum_text = self.parse_html_to_json(curriculum_html)
                 
-
             return program_info, program_curriculum_text
 
         except Exception as e:
             print(f"Error extracting program info")
             self.click_close_alert_button()
             return None
+
+
+
+    def parse_html_to_json(self, html_content):
+        soup = BeautifulSoup(html_content, 'html.parser')
+
+        result = []
+        containers = soup.find_all('div', class_='css-1jenhu5')
+
+        for container in containers:
+            big_section = container.find('div', class_='css-slv2ha')
+            if big_section:
+                big_section_title = big_section.find('h3', {'data-testid': 'title'})
+                if big_section_title:
+                    big_section_title_text = big_section_title.text.strip()
+
+                    small_sections = container.find_all('button', class_='css-1hvtp3b')
+                    small_sections_data = []
+
+                    for section in small_sections:
+                        title_elem = section.find('h3', {'data-testid': 'title', 'class': 'css-u3phay'})
+                        time_elem = section.find('span', {'data-testid': 'body', 'class': 'css-bgvpp3'})
+                        
+                        if title_elem and time_elem:
+                            title_text = title_elem.text.strip()
+                            time_text = time_elem.text.strip()
+                            small_sections_data.append({
+                                "small_section": title_text,
+                                "time": time_text
+                            })
+                    
+                    if small_sections_data:
+                        result.append({
+                            "big_section": big_section_title_text,
+                            "small_sections": small_sections_data
+                        })
+                    else:
+                        print(f"No small sections data for {big_section_title_text}")
+            else:
+                print("No big section found in this container.")
+
+        return result
+
+
 
 
     def extract_text_from_home_section(self):
