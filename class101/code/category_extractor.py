@@ -9,7 +9,6 @@ import clipboard, time
 import pandas as pd
 import math, random, json, re
 
-COMCON = Keys.CONTROL
 WORK_TERM_SLEEP = 1
 
 class Class101Crawler:
@@ -34,12 +33,12 @@ class Class101Crawler:
         try:
             # 지정된 부모 div 요소
             parent_element = self.driver.find_element(By.CLASS_NAME, "css-71redh")
-            
+
             # 모든 텍스트를 포함한 태그 검색
             all_text_elements = parent_element.find_elements(By.XPATH, ".//h1 | .//span")
 
             all_texts = [element.text.strip() for element in all_text_elements if element.text.strip()]
-            
+
             for one in all_texts[2:]:
                 self.programs.append({
                     "first_category": all_texts[0],
@@ -113,7 +112,7 @@ class Class101Crawler:
             links = [element.get_attribute("href") for element in link_elements]
             category_links = [link for link in links if "categories" in link]
             self.click_close_alert_button()
-            
+
             return category_links
         except Exception as e:
             self.click_close_alert_button()
@@ -124,7 +123,7 @@ class Class101Crawler:
         collected_links = set()
         self.click_close_alert_button()
         last_height = self.driver.execute_script("return document.body.scrollHeight")
-        
+
         while True:
             try:
                 list_elements = self.driver.find_elements(By.CSS_SELECTOR, "li a[href]")
@@ -176,7 +175,7 @@ class Class101Crawler:
             self.click_close_alert_button()
             return None
 
-            
+
     def find_and_click_share_button(self):
         try:
             buttons = self.driver.find_elements(By.TAG_NAME, "button")
@@ -186,7 +185,7 @@ class Class101Crawler:
                     if "공유" in button.text:
                         self.click_close_alert_button()
                         parent_section = button.find_element(By.XPATH, "./ancestor::div[@data-testid='paper']")
-                        
+
                         self.click_close_alert_button()
                         title_element = parent_section.find_element(By.XPATH, ".//h2[@data-testid='title']")
                         title_text = title_element.text.strip() if title_element else "N/A"
@@ -227,7 +226,7 @@ class Class101Crawler:
             creator_section = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, "creator"))
             )
-            
+
             self.click_close_alert_button()
             data = {}
 
@@ -296,7 +295,7 @@ class Class101Crawler:
                 for lecture in curriculum.get('lectures'):
                     program_curriculum_text += f"{lecture}\n"
                 program_curriculum_text += "\n"
-                
+
 
             return program_info, program_curriculum_text
 
@@ -310,10 +309,10 @@ class Class101Crawler:
         try:
             self.click_close_alert_button()
             home_element = self.driver.find_element(By.XPATH, "//p[button[text()='홈']]")
-            
+
             self.click_close_alert_button()
             content_area = home_element.find_element(By.XPATH, "./ancestor::div[@data-testid='content-area']")
-            
+
             self.click_close_alert_button()
             all_texts = content_area.text.strip().split("\n")
 
@@ -322,13 +321,13 @@ class Class101Crawler:
             print(f"Error extracting text from home section")
             self.click_close_alert_button()
             return None
-        
+
 
     def extract_program_description(self):
         try:
             self.click_close_alert_button()
             section = self.driver.find_element(By.ID, "class_description")
-            
+
             self.click_close_alert_button()
             elements = section.find_elements(By.XPATH, ".//*")
             time.sleep(WORK_TERM_SLEEP)
@@ -360,7 +359,7 @@ class Class101Crawler:
                     count += 1
                     if count == 2:
                         button.click()
-            
+
             time.sleep(WORK_TERM_SLEEP)
 
             self.click_close_alert_button()
@@ -387,7 +386,7 @@ class Class101Crawler:
             print(f"Error kit:")
             self.click_close_alert_button()
             return None
-        
+
 
     def click_close_alert_button(self):
         try:
@@ -395,7 +394,7 @@ class Class101Crawler:
             close_button.click()
         except:
             pass
-            
+
 
 if __name__ == "__main__":
     crawler = Class101Crawler()
