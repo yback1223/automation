@@ -8,18 +8,30 @@ from selenium.webdriver.support.ui import Select
 import clipboard, time
 import pandas as pd
 import math, random, json, re
+import os
+import urllib.parse
 
 COMCON = Keys.CONTROL
 WORK_TERM_SLEEP = 1
+CRAWL_START_DATE_FILE = "crawled_data_20250224.json"
 
 class GgoomgilCrawler:
 
     def __init__(self):
-        self.programs = self.load_existing_data("crawled_data.json")
         self.driver = Driver().set_chrome()
         self.actions = ActionChains(self.driver)
         self.url = "https://www.ggoomgil.go.kr/front/mypage/schlProgramList.do"
         self.current_page = 1
+
+    def get_program_names(self):
+        program_names = []  
+        loaded_data = self.load_existing_data(CRAWL_START_DATE_FILE)
+
+        for program in loaded_data:
+            program_names.append(program["program_name"])
+
+        return program_names
+
 
     def run(self):
         try:
@@ -28,40 +40,30 @@ class GgoomgilCrawler:
 
             self.choose_list_size()
 
-            existing_titles = {program.get("program_name") for program in self.programs}
-            print(f"Existing titles: {len(existing_titles)} found.")
+            
+
+            existing_titles = self.get_program_names()
 
             while True:
-                print(f"Starting page {self.current_page}")
 
-                # 모든 program_rows 가져오기
                 program_rows = self.get_rows_from_list()
-                print(f"Found {len(program_rows)} rows on page {self.current_page}.")
                 if not program_rows:
                     print(f"No rows found on page {self.current_page}.")
                     break
 
-                # 현재 페이지에서 program_name만 추출
                 current_titles = self.extract_titles_from_rows(program_rows)
-                print(f"Titles on this page: {len(current_titles)}")
-
-                # 기존 데이터와 비교하여 새로운 제목 필터링
                 new_titles = [title for title in current_titles if title not in existing_titles]
-                print(f"New titles to process: {len(new_titles)}")
 
                 if not new_titles:
                     if not self.navigate_to_next_page():
-                        print("Reached the last page. Exiting loop.")
                         break
                     continue
 
-                # 새로운 제목만 포함하는 program_rows 필터링
                 filtered_program_rows = [
                     row for row in program_rows 
                     if row.find_element(By.CLASS_NAME, "data-list-title").text.strip() in new_titles
                 ]
 
-                # 필터링된 program_rows 처리
                 for program_row in filtered_program_rows:
                     try:
                         program_name, corp_type, apply_date, program_rough_location = self.extract_data_from_rows(program_row)
@@ -69,24 +71,27 @@ class GgoomgilCrawler:
                         program_row.click()
                         time.sleep(3)
 
-                        link = self.get_link()
                         corp_name = self.extract_place()
                         program_term = self.extract_program_term()
                         program_info = self.translate_keys(dl_data=self.extract_dl_elements())
+                        program_image = self.extract_program_image()
                         elementary_details = self.parse_program_details(self.extract_program_info('초등학교'))
                         middle_details = self.parse_program_details(self.extract_program_info('중학교'))
                         high_details = self.parse_program_details(self.extract_program_info('고등학교'))
                         notice = self.extract_notice()
                         how_to_go = self.extract_location_info()
                         appliable_location = self.extract_available_regions()
+                        link = self.get_link()
+
                         print(f'링크: {link}\n, 체험처: {corp_name}')
 
 
-                        self.programs.append({
+                        crawled_program = {
                             "program_name": program_name,
                             "corp_name": corp_name,
                             "corp_type": corp_type,
                             "link": link,
+                            "program_image": program_image,
                             "program_rough_location": program_rough_location,
                             "program_term": program_term,
                             "apply_date": apply_date,
@@ -120,7 +125,9 @@ class GgoomgilCrawler:
                             "notice": notice,
                             "how_to_go": how_to_go,
                             "appliable_location": appliable_location
-                        })
+                        }
+
+                        self.save_data_to_json(CRAWL_START_DATE_FILE, crawled_program)
 
                     except Exception as e:
                         print(f"[경고] 프로그램 하나의 정보를 가져오는 중 오류가 발생했습니다: {e}")
@@ -134,18 +141,18 @@ class GgoomgilCrawler:
                     print("Reached the last page. Exiting loop.")
                     break
 
-            self.save_to_json("crawled_data.json")
+            self.save_data_to_json(CRAWL_START_DATE_FILE, crawled_program)
 
         except Exception as e:
             print(f"Error during crawling: {e}")
-            self.save_to_json("crawled_data.json")
+            self.save_data_to_json(CRAWL_START_DATE_FILE, crawled_program)
         finally:
-            self.save_to_json("crawled_data.json")
+            self.save_data_to_json(CRAWL_START_DATE_FILE, crawled_program)
             self.driver.quit()
 
     def get_link(self):
         try:
-            share_button = WebDriverWait(self.driver, 5).until(
+            share_button = WebDriverWait(self.driver, 2).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, f"button.btn_share[title='팝업열림']"))
             )
             share_button.click()
@@ -154,7 +161,7 @@ class GgoomgilCrawler:
             print(f"Error opening popup")
 
         try:
-            copy_link_button = WebDriverWait(self.driver, 5).until(
+            copy_link_button = WebDriverWait(self.driver, 2).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, f"button.btn_copy[title='url 복사']"))
             )
             copy_link_button.click()
@@ -162,15 +169,6 @@ class GgoomgilCrawler:
             corp_name = clipboard.paste()
         except:
             print(f"Error copying url")
-
-        try:
-            close_link_button = WebDriverWait(self.driver, 5).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, f"button.btn_share_close[title='팝업닫힘']"))
-            )
-            close_link_button.click()
-            time.sleep(WORK_TERM_SLEEP)
-        except:
-            print(f"Error closing popup")      
 
         return corp_name
 
@@ -189,10 +187,6 @@ class GgoomgilCrawler:
         return titles
 
     def load_existing_data(self, file_name):
-        """
-        기존에 저장된 JSON 파일을 로드하여 self.programs에 넣어주는 함수.
-        파일이 없거나, 파싱 에러가 나면 빈 리스트를 반환.
-        """
         try:
             with open(file_name, "r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -203,13 +197,26 @@ class GgoomgilCrawler:
             return []
 
 
-    def save_to_json(self, file_name):
+    def save_data_to_json(self, file_name: str, new_data: dict):
         try:
-            with open(file_name, "w", encoding="utf-8") as json_file:
-                json.dump(self.programs, json_file, ensure_ascii=False, indent=4)
-            print(f"Data successfully saved to {file_name}")
+            try:
+                with open(file_name, "r", encoding="utf-8") as f:
+                    existing_data = json.load(f)
+                    if not isinstance(existing_data, list):
+                        existing_data = []
+            except (FileNotFoundError, json.JSONDecodeError):
+                existing_data = []
+
+            existing_data.append(new_data)
+
+            with open(file_name, "w", encoding="utf-8") as f:
+                json.dump(existing_data, f, ensure_ascii=False, indent=4)
+
+
+            print(f"Data successfully saved to {file_name} (Total: {len(existing_data)} programs)")
         except Exception as e:
             print(f"Error saving data to JSON: {e}")
+
 
     def navigate_to_next_page(self):
         try:
@@ -384,6 +391,54 @@ class GgoomgilCrawler:
             print(f"[경고] dl_wrap 요소를 찾는 중 오류가 발생했습니다")
             return {}
 
+    def extract_program_image(self):
+        """프로그램 이미지 URL을 추출하는 함수
+        
+        Returns:
+            str: 이미지 URL 또는 빈 문자열 (이미지가 없는 경우)
+        """
+        try:
+            # 여러 선택자를 시도하여 이미지 요소 찾기
+            selectors = [
+                "div.slick-slide.slick-current.slick-active img",
+                "div.slick-slide.slick-active img",
+                "div.program_info div.slick-slide img"
+            ]
+            
+            for selector in selectors:
+                try:
+                    image_element = WebDriverWait(self.driver, 3).until(
+                        EC.presence_of_element_located((By.CSS_SELECTOR, selector))
+                    )
+                    image_url = image_element.get_attribute("src")
+                    if image_url and not image_url.endswith('noimage.jpg'):
+                        # fileView.do URL을 이미지 직접 URL로 변환
+                        if 'fileView.do' in image_url:
+                            # URL에서 필요한 정보 추출
+                            parsed_url = urllib.parse.urlparse(image_url)
+                            query_params = urllib.parse.parse_qs(parsed_url.query)
+                            
+                            # 새로운 이미지 직접 URL 생성
+                            path = query_params.get('path', [''])[0]
+                            physical = query_params.get('physical', [''])[0]
+                            if path and physical:
+                                image_url = f"https://www.ggoomgil.go.kr/upload/{path}/{physical}"
+                        
+                        # 상대 경로를 절대 경로로 변환
+                        elif image_url.startswith('/'):
+                            image_url = f"https://www.ggoomgil.go.kr{image_url}"
+                        
+                        return image_url
+                except:
+                    continue
+
+            print("[알림] 이미지를 찾을 수 없거나 기본 이미지입니다.")
+            return ""
+            
+        except Exception as e:
+            print(f"[경고] 프로그램 이미지 추출 중 오류가 발생했습니다: {str(e)}")
+            return ""
+
     def translate_keys(self, dl_data):
 
         key_translation = {
@@ -468,7 +523,7 @@ class GgoomgilCrawler:
     def click_close_button(self):
         try:
             close_button = WebDriverWait(self.driver, 3).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "button.cs-btn.cs-btn-x.cs-btn-white2[onclick='expViewClose()']"))
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "button.cs-btn cs-btn-x cs-btn-white2"))
             )
             close_button.click()
         except Exception as e:
