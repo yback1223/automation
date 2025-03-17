@@ -46,6 +46,31 @@ class CareernetMajorCrawler:
             return contents
 
 
+    def set_list_options(self):
+        try:
+            select_element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.ID, "tagUl1"))
+            )
+            select = Select(select_element)
+            select.select_by_value("30")
+
+            list_view = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "a.icon_list"))
+            )
+            list_view.click()
+
+            apply_button = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "a.list_apply"))
+            )
+            apply_button.click()
+
+            time.sleep(WORK_TERM_SLEEP)
+
+        except Exception as e:
+            print(f"Error setting list options: {e}")
+
+
+
     def run(self):
         try:
 
