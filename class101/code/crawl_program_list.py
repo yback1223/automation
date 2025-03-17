@@ -102,7 +102,13 @@ class Class101Crawler:
                 EC.presence_of_all_elements_located((By.CSS_SELECTOR, "a[data-testid='pressable']"))
             )
             self.click_close_alert_button()
-            category_names = ["디지털 드로잉", "금융 · 재테크", "프로그래밍", "영어", "아이 교육"]
+            category_names = [
+                "디지털 드로잉", "드로잉", "공예", "요리 · 음료", "베이킹 · 디저트", "음악", "운동", "라이프스타일", "사진 · 영상",
+                "금융 · 재테크", "창업 · 부업", "성공 마인드",
+                "프로그래밍", "데이터사이언스", "제품 기획", "비즈니스", "생산성", "마케팅", "디자인", "영상/3D", 
+                "영어", "외국어 시험", "제2 외국어",
+                "아이 교육", "부모 교육"
+            ]
             links = []
 
             for element in link_elements:
@@ -162,6 +168,16 @@ class Class101Crawler:
             close_button.click()
         except:
             pass
+
+    def is_duplicate_link(self, href: str, collected_links: list[dict[str, str]]) -> bool:
+        return any(link["link"] == href for link in collected_links)
+
+    def extract_image_url(self, element) -> str:
+        try:
+            img_element = element.find_element(By.TAG_NAME, "img")
+            return img_element.get_attribute("src")
+        except:
+            return ""
             
 
 if __name__ == "__main__":

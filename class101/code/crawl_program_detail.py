@@ -15,8 +15,8 @@ import math, random, json
 
 
 WORK_TERM_SLEEP = 1
-LIST_FILE = "crawled_program_list.json"
-CRAWLED_FILE = "crawled_program_details_tmp.json"
+LIST_FILE = "crawled_program_list_total.json"
+CRAWLED_FILE = "crawled_program_details_total.json"
 
 class Class101Crawler:
     def __init__(self):
@@ -49,9 +49,14 @@ class Class101Crawler:
     def run(self):
         try:
 
-            big_categories = ["디지털 드로잉", "금융 · 재테크", "프로그래밍", "영어", "아이 교육"]
-
-            for big_category in big_categories:
+            category_names = [
+                "디지털 드로잉", "드로잉", "공예", "요리 · 음료", "베이킹 · 디저트", "음악", "운동", "라이프스타일", "사진 · 영상",
+                "금융 · 재테크", "창업 · 부업", "성공 마인드",
+                "프로그래밍", "데이터사이언스", "제품 기획", "비즈니스", "생산성", "마케팅", "디자인", "영상/3D", 
+                "영어", "외국어 시험", "제2 외국어",
+                "아이 교육", "부모 교육"
+            ]
+            for big_category in category_names:
                 not_crawled_contents = self.load_not_crawled_contents(crawled_file=CRAWLED_FILE, program_list_file=LIST_FILE, category=big_category)
                 for content in not_crawled_contents:
                     content_link = content.get('link')
