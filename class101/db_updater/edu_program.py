@@ -1,14 +1,32 @@
 import random
+import os
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import text
 import json
+
+# 리소스 디렉토리 경로 설정
+RESOURCE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "resources")
 
 class EduProgram:
     def __init__(self, db_url: str):
         self.db_url = db_url
         self.engine = None
         self.session = None
+        self.job_hir_codes = []
+        
+        # job_hir_codes.json 파일 경로
+        job_hir_codes_path = os.path.join(RESOURCE_DIR, "job_hir_codes.json")
+        
+        try:
+            if os.path.exists(job_hir_codes_path):
+                with open(job_hir_codes_path, "r", encoding="utf-8") as f:
+                    self.job_hir_codes = json.load(f)
+                print(f"✅ Loaded job_hir_codes.json: {len(self.job_hir_codes)} codes")
+            else:
+                print(f"⚠️ Warning: job_hir_codes.json not found at {job_hir_codes_path}")
+        except Exception as e:
+            print(f"❌ Error loading job_hir_codes.json: {e}")
 
     async def __aenter__(self):
         self.engine = create_async_engine(self.db_url, pool_pre_ping=True)
@@ -183,6 +201,106 @@ class EduProgram:
         except Exception as e:
             await self.session.rollback()
             print(f"Error adding programs: {str(e)}")
+            raise
+
+    async def get_hir_job_code(self, job_hir_name: str) -> str:
+        """job_hir_name에 해당하는 hir_job_code를 가져옵니다."""
+        if not job_hir_name or not isinstance(job_hir_name, str):
+            print(f'❌ Invalid job_hir_name: {job_hir_name}')
+            return None
+            
+        print(f'🔍 Searching for job_hir_name: {job_hir_name}')
+        
+        for job_hir_code in self.job_hir_codes:
+            if not isinstance(job_hir_code, dict) or "name" not in job_hir_code:
+                continue
+                
+            job_code_name = job_hir_code["name"]
+            # 공백 제거 후 포함 여부 확인
+            if job_hir_name.replace(" ", "") in job_code_name.replace(" ", ""):
+                print(f'✅ Match found! job_hir_name: {job_hir_name}, job_hir_code: {job_code_name}')
+                
+                # code 필드가 있으면 사용, 없으면 name에서 추출
+                if "code" in job_hir_code:
+                    return job_hir_code["code"]
+                else:
+                    # name이 4자 이상인지 확인
+                    return job_code_name[:4] if len(job_code_name) >= 4 else None
+                    
+        print(f'❌ No match found for job_hir_name: {job_hir_name}')
+        return None
+
+    async def update_hir_job_code(self):
+        """hir_job_code를 업데이트합니다."""
+        try:
+            if not self.job_hir_codes:
+                print("⚠️ Warning: No job_hir_codes available, skipping update")
+                return
+                
+            # 1. hir_job_claf가 비어있는 레코드 조회
+            select_query = text("""
+                SELECT id, program_name, code_detail, hir_job_claf
+                FROM edu_program 
+                WHERE hir_job_claf = '' OR hir_job_claf IS NULL
+            """)
+            result = await self.session.execute(select_query)
+            records = result.fetchall()
+            
+            if not records:
+                print("No records found with empty hir_job_claf")
+                return
+            
+            print(f"Found {len(records)} records with empty hir_job_claf")
+            update_count = 0
+            
+            # 2. 각 레코드의 hir_job_code 업데이트
+            update_query = text("""
+                UPDATE edu_program 
+                SET hir_job_claf = :hir_job_code
+                WHERE id = :id
+            """)
+            
+            for record in records:
+                id, program_name, code_detail_str, hir_job_claf = record
+                
+                # JSON 문자열 파싱
+                if code_detail_str != '[]' and not hir_job_claf:
+                    try:
+                        code_detail = json.loads(code_detail_str)
+                        print(f'code_detail: {code_detail}, hir_job_claf: {hir_job_claf}')
+                        
+                        # code_detail이 리스트인 경우 첫 번째 항목 사용
+                        if isinstance(code_detail, list) and len(code_detail) > 0:
+                            code_detail_item = code_detail[0]
+                        else:
+                            code_detail_item = code_detail
+                            
+                        # 이제 딕셔너리로 처리
+                        if isinstance(code_detail_item, dict) and "depth_4" in code_detail_item:
+                            job_hir_name = code_detail_item["depth_4"].replace(" ", "")
+                            print(f'job_hir_name: {job_hir_name}')
+                            hir_job_code = await self.get_hir_job_code(job_hir_name)
+                            
+                            if hir_job_code:
+                                await self.session.execute(
+                                    update_query,
+                                    {
+                                        "id": id,
+                                        "hir_job_code": hir_job_code
+                                    }
+                                )
+                                update_count += 1
+                                print(f"Updated record id {id}: hir_job_code '{hir_job_code}' for '{program_name}'")
+                    except json.JSONDecodeError:
+                        print(f"Failed to parse code_detail for id {id}")
+                        continue
+            
+            await self.session.commit()
+            print(f"✅ Successfully updated {update_count} records!")
+            
+        except Exception as e:
+            await self.session.rollback()
+            print(f"❌ An error occurred: {e}")
             raise
 
     async def update_audio_program_time(self):
