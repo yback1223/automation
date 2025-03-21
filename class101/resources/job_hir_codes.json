@@ -1,6 +1,6 @@
 [
   {
-    "name": "0111.의회의원·고위공무원 · 공공단체임원",
+    "name": "0111.의회의원·고위공무원 및 공공단체임원",
     "categories": [
       {
         "first_category": "라이프스타일",
@@ -1111,7 +1111,7 @@
     ]
   },
   {
-    "name": "1349.기타 네트워크 및 네트워크 전문가",
+    "name": "1349.기타 데이터 및 네트워크 전문가",
     "categories": [
       { "first_category": "프로그래밍", "second_category": "보안 · 네트워크" },
       { "first_category": "프로그래밍", "second_category": "시스템 · DevOps" },
@@ -1255,7 +1255,7 @@
     ]
   },
   {
-    "name": "1513.기계 · 로봇공학 시험원",
+    "name": "1513.기계ㆍ로봇공학시험원",
     "categories": [
       { "first_category": "아이 교육", "second_category": "자연 · 과학" },
       { "first_category": "데이터사이언스", "second_category": "데이터분석" },
@@ -1351,7 +1351,7 @@
     ]
   },
   {
-    "name": "1551.가스·에너지 기술자 및 연구원",
+    "name": "1551.가스·에너지 공학 기술자 및 연구원",
     "categories": [
       { "first_category": "아이 교육", "second_category": "자연 · 과학" },
       { "first_category": "비즈니스", "second_category": "사업기획 · 전략" },

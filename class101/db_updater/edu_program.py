@@ -209,7 +209,7 @@ class EduProgram:
             print(f'❌ Invalid job_hir_name: {job_hir_name}')
             return None
             
-        print(f'🔍 Searching for job_hir_name: {job_hir_name}')
+        # print(f'🔍 Searching for job_hir_name: {job_hir_name}')
         
         for job_hir_code in self.job_hir_codes:
             if not isinstance(job_hir_code, dict) or "name" not in job_hir_code:
@@ -267,7 +267,7 @@ class EduProgram:
                 if code_detail_str != '[]' and not hir_job_claf:
                     try:
                         code_detail = json.loads(code_detail_str)
-                        print(f'code_detail: {code_detail}, hir_job_claf: {hir_job_claf}')
+                        # print(f'code_detail: {code_detail}, hir_job_claf: {hir_job_claf}')
                         
                         # code_detail이 리스트인 경우 첫 번째 항목 사용
                         if isinstance(code_detail, list) and len(code_detail) > 0:
@@ -278,7 +278,7 @@ class EduProgram:
                         # 이제 딕셔너리로 처리
                         if isinstance(code_detail_item, dict) and "depth_4" in code_detail_item:
                             job_hir_name = code_detail_item["depth_4"].replace(" ", "")
-                            print(f'job_hir_name: {job_hir_name}')
+                            # print(f'job_hir_name: {job_hir_name}')
                             hir_job_code = await self.get_hir_job_code(job_hir_name)
                             
                             if hir_job_code:
@@ -300,7 +300,7 @@ class EduProgram:
             
         except Exception as e:
             await self.session.rollback()
-            print(f"❌ An error occurred: {e}")
+            # print(f"❌ An error occurred: {e}")
             raise
 
     async def update_audio_program_time(self):
@@ -343,7 +343,7 @@ class EduProgram:
             
         except Exception as e:
             await self.session.rollback()
-            print(f"❌ An error occurred: {e}")
+            # print(f"❌ An error occurred: {e}")
             raise
 
     async def swap_language_and_subtitle(self):
